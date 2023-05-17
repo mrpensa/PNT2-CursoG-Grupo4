@@ -14,7 +14,7 @@ defineProps({
 
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <RouterLink class="navbar-brand" to="/">The Garage</RouterLink>
+    <RouterLink class="navbar-brand" to="/">ORT</RouterLink>
     <button
       class="navbar-toggler"
       type="button"
@@ -31,7 +31,7 @@ defineProps({
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <RouterLink class="nav-link" to="/"
-            >Vehículos <span class="sr-only">(current)</span></RouterLink
+            >Home <span class="sr-only">(current)</span></RouterLink
           >
         </li>
         <li class="nav-item" v-if="userName != ''">

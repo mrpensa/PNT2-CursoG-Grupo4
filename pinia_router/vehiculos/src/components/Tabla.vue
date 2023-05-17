@@ -10,20 +10,17 @@ const { borrar, lista } = store;
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Marca</th>
-        <th scope="col">Modelo</th>
-        <th scope="col">Opciones</th>
+        <th scope="col">Materia</th>
+        <th scope="col">Comision</th>
+        <th scope="col">Remover</th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(auto, index) in lista" :key="index">
-        <th scope="row">{{ auto.id }}</th>
-        <td>{{ auto.marca }}</td>
-        <td>{{ auto.modelo }}</td>
+      <tr v-for="(materia, index) in lista" :key="index">
+        <td>{{ materia.nombre }}</td>
+        <td>{{ materia.comision }}</td>
         <td>
-          <button class="btn btn-secondary">editar</button
-          ><button @click="borrar(auto.id)" class="btn btn-danger ml-2">
+        <button @click="borrar(materia.nombre)" class="btn btn-danger ml-2">
             borrar
           </button>
         </td>
