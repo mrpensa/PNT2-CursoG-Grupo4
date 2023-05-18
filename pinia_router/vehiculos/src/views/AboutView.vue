@@ -5,9 +5,9 @@ import { useCounterStore } from "../stores/counter";
 const store = useCounterStore();
 const { count } = storeToRefs(store);
 const { lista } = store;
-const auto = {
-  marca: "",
-  modelo: "",
+const materia = {
+  nombre: "",
+  comision: "",
 };
 </script>
 
@@ -20,16 +20,16 @@ const auto = {
   <table class="table table-striped table-dark">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Marca</th>
-        <th scope="col">Modelo</th>
+        <th scope="col"></th>
+        <th scope="col">nombre</th>
+        <th scope="col">comision</th>
       </tr>
     </thead>
     <tbody>
-      <tr v-for="(auto, index) in lista" :key="index">
-        <th scope="row">{{ auto.id }}</th>
-        <td>{{ auto.marca }}</td>
-        <td>{{ auto.modelo }}</td>
+      <tr v-for="(materia, index) in lista" :key="index">
+        <th> </th>
+        <td>{{ materia.nombre }}</td>
+        <td>{{ materia.comision }}</td>
       </tr>
     </tbody>
   </table>

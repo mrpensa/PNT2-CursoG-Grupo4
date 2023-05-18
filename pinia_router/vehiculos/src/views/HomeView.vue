@@ -6,58 +6,48 @@ import Tabla from "../components/Tabla.vue";
 const store = useCounterStore();
 const { count } = storeToRefs(store);
 const { agregar } = store;
-const auto = {
+const materia = {
   id: count.value,
-  marca: "",
-  modelo: "",
+  nombre: "",
+  comision: "",
 };
 </script>
 <template>
   <div class="row pt-4">
     <div class="col-md-9">
-      <h1>Lista de Vehículos ({{ count }})</h1>
+      <h1>Materias Inscriptas</h1>
       <RouterLink to="/users"><button class="btn btn-warning m-2">Usuarios</button></RouterLink>
       <Tabla></Tabla>
     </div>
     <div class="col-md-3">
-      <div class="form-group">
-        <label for="id">Id</label>
+      <h2>Nueva materia</h2>
+    <div class="form-group">
+        <label for="nombre">Materia</label>
         <input
-          v-model="auto.id"
+          v-model="materia.nombre"
           type="text"
           class="form-control"
-          id="id"
-          aria-describedby="idAyuda"
+          id="nombre"
+          aria-describedby="nombreAyuda"
         />
-        <small id="idAyuda" class="form-text text-muted">Ingrese id.</small>
-      </div>
-      <div class="form-group">
-        <label for="marca">Marca</label>
-        <input
-          v-model="auto.marca"
-          type="text"
-          class="form-control"
-          id="marca"
-          aria-describedby="marcaAyuda"
-        />
-        <small id="marcaAyuda" class="form-text text-muted"
-          >Ingrese la Marca.</small
+        <small id="nombreAyuda" class="form-text text-muted"
+          >Ingrese la nombre.</small
         >
       </div>
       <div class="form-group">
-        <label for="modelo">Modelo</label>
+        <label for="comision">Comision</label>
         <input
-          v-model="auto.modelo"
+          v-model="materia.comision"
           type="text"
           class="form-control"
-          id="modelo"
-          aria-describedby="modeloAyuda"
+          id="comision"
+          aria-describedby="comisionAyuda"
         />
-        <small id="modeloAyuda" class="form-text text-muted"
-          >Ingrese el Modelo.</small
+        <small id="comisionAyuda" class="form-text text-muted"
+          >Disponible de la A a la E</small
         >
       </div>
-      <button @click="agregar(auto)">Agregar</button>
+      <button @click="agregar(materia)">Agregar</button>
     </div>
   </div>
 </template>

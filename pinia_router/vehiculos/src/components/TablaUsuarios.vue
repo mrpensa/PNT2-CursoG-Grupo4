@@ -8,7 +8,8 @@ const { borrar, listaUsers, getTablaUsuarios } = store;
 onMounted(() => getTablaUsuarios)
 </script>
 
-<template>
+<template> 
+
   <table class="table table-striped">
     <thead>
       <tr>
@@ -23,8 +24,8 @@ onMounted(() => getTablaUsuarios)
       <tr v-for="(user, index) in getTablaUsuarios" :key="index">
         <th scope="row">{{ user.id }}</th>
         <td>{{ user.name }}</td>
-        <td>{{ user.username }}</td>
-        <td>{{ user.email }}</td>
+        <td>{{ user.gender }}</td>
+        <td>{{ user.image }}</td>
         <td>{{ user.address.street }} {{ user.address.suite }}, {{ user.address.city }}</td>
         <td>
           <button class="btn btn-secondary">editar</button

@@ -5,7 +5,7 @@ import userService from "../services/userService";
 
 export const useCounterStore = defineStore("counter", {
   state: () => {
-    // PEDIDO A UNA URL... MEDIANTE AXIOS... lista de autos
+    // PEDIDO A UNA URL... MEDIANTE AXIOS... lista de materias
     // let arraylista = lo que devuelva axios
 
     // inicar una variable conteo inicial + X porcentual...
@@ -15,51 +15,47 @@ export const useCounterStore = defineStore("counter", {
       count: ref(0),
       userName: "",
       lista: [
-        { id: 1, marca: "FORD", modelo: "MUSTANG" },
-        { id: 2, marca: "CITROEN", modelo: "3CV" },
+        { nombre: "P1", comision: "A" },
+        { nombre: "Matemática", comision: "B" },
       ],
       listaUsers: [],
     };
   },
   // methods en un componente... son las funciones.
   actions: { 
-    borrar(id) {
+    borrar(nombre) {
       // Primer habría que borrarlo del back... a través de axios.delete...
       // si la respuesta fuera favorable... recién ahí... borrar el fron... sino mostrar mensaje de error
-      let index = this.lista.findIndex((auto) => auto.id == id);
+      let index = this.lista.findIndex((materia) => materia.nombre == nombre);
       this.lista.splice(index, 1);
       console.log(this.lista);
     },
-    agregar(auto) {
-      // mediante axios.post("url/cars, auto")... then... 
-      this.lista.push({ ...auto });
+    agregar(materia) {
+      // mediante axios.post("url/cars, materia")... then... 
+      this.lista.push({ ...materia });
       // .catch... tirará un alert de error.
       this.count++;
       console.log(this.count);
     },
     async fetchUsers() {
-      try {
-        // const response = await axios.get(
-        //   "https://jsonplaceholder.typicode.com/users"
-        // );
-        this.listaUsers = userService.getAll();
-        //this.listaUsers = response.data;
-        console.log(this.listaUsers);
-        console.log("Bajamos la lista de usuarios" + this.listaUsers[0].name);
-      } catch (error) {
-        alert(error);
-        console.log(error);
-      }
+      await axios.get('https://rickandmortyapi.com/api/character')
+        .then(response => {
+          this.listaUsers = response.data.results;
+        })
+        .catch(error => {
+          console.log(error);
+        });
     },
   },
   getters: {
-    getTablaUsuarios() {
+    getTablaUsuarios() {     
       if (this.listaUsers.length <= 0) {
-        this.fetchUsers();
-        return this.listaUsers;
+       
+        return  this.fetchUsers();
       } else {
         return this.listaUsers;
       }
+      
     },
   },
 });

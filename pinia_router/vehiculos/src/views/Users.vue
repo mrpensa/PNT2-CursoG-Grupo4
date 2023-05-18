@@ -1,5 +1,5 @@
 <script setup>
-  import TablaUsuarios from '../components/TablaUsuarios.vue';
+import TablaUsuarios from '../components/TablaUsuarios.vue';
 </script>
 
 <template>
